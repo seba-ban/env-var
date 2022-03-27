@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "env_var"
+version = "0.1.0"
+description = ""
+authors = ["seba-ban <banaszkiewicz.sebastian@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+rfc3339-validator = "^0.1.4"
+fqdn = "^1.5.1"
+isoduration = "^20.11.0"
+python-dateutil = "^2.8.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.1"
+pytest-cov = "^3.0.0"
+black = "^22.1.0"
+isort = "^5.10.1"
+sphinx-rtd-theme = "^1.0.0"
+myst-parser = "^0.17.0"
+pylint = "^2.13.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
