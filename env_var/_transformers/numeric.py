@@ -3,10 +3,10 @@ from typing import Optional, Type, TypeVar
 NumericType = TypeVar("NumericType", int, float)
 
 
-def num__transformer_factory(
+def num_transformer_factory(
     type_: Type[NumericType],
-    min: Optional[int] = None,
-    max: Optional[int] = None,
+    min: Optional[NumericType] = None,
+    max: Optional[NumericType] = None,
     base: Optional[int] = None,
 ):
     def transformer(s: str) -> NumericType:
@@ -20,7 +20,7 @@ def num__transformer_factory(
         if base is None:
             val = type_(s)
         else:
-            val = type_(s, base=base)
+            val = type_(s, base=base)  # type: ignore
 
         if min is not None and val < min:
             raise ValueError(f"should be bigger than {min}")

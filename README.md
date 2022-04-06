@@ -10,6 +10,7 @@ port = env('PORT').as_port_number().required() # port type hint is `int`
 minio_host = env('MINIO_HOST').as_hostname().optional() # minio_host type hint is `str | None`
 ```
 
+
 ## Type Hints
 
 ```python

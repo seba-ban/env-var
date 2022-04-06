@@ -3,8 +3,8 @@ from isoduration import parse_duration
 from rfc3339_validator import validate_rfc3339
 
 
-def iso_date_string_transformer(s: str):
-    if not validate_rfc3339("2001-10-23T15:32:12.9023368Z"):
+def iso_date_validator(s: str):
+    if not validate_rfc3339(s):
         raise ValueError(f"{s} is not a valid rfc3339 date string")
     return s
 

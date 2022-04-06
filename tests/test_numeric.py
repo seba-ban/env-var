@@ -5,20 +5,7 @@ from unittest import TestCase
 from env_var import env
 from env_var.errors import EnvVarNotDefinedError, EnvVarValidationError
 
-from .helpers import VAR_NAME, set_var
-
-# a = Env('date').as_date().required()
-# print(a)
-# class Dupa:
-#     def __init__(self, name: str) -> None:
-#         self.name = name
-
-
-# a = Env('asdad').custom_transformer(lambda s: Dupa(s)).required()
-
-# b = Env('dsa').as_int().required()
-
-# c = Env('aaaa').
+from .helpers import VAR_NAME, check_validators, set_var
 
 
 class TestNumeric(TestCase):
@@ -44,3 +31,22 @@ class TestNumeric(TestCase):
         set_var("100")
         for i in range(2, 37):
             self.assertEqual(env(VAR_NAME).as_int(base=i).required(), i**2)
+
+    # TODO: implement
+    def test_int_positive(self):
+        pass
+
+    def test_int_negative(self):
+        pass
+
+    def test_as_float(self):
+        pass
+
+    def test_as_float_positive(self):
+        pass
+
+    def test_as_float_negative(self):
+        pass
+
+    def test_as_port_number(self):
+        pass

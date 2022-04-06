@@ -2,14 +2,15 @@
 name = "env_var"
 version = "0.1.0"
 description = ""
-authors = ["seba-ban <banaszkiewicz.sebastian@gmail.com>"]
+authors = ["Sebastian Banaszkiewicz <banaszkiewicz.sebastian@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 rfc3339-validator = "^0.1.4"
-fqdn = "^1.5.1"
 isoduration = "^20.11.0"
 python-dateutil = "^2.8.2"
+validators = "^0.18.2"
+rfc3986-validator = "^0.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.1"
@@ -23,3 +24,6 @@ pylint = "^2.13.1"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
