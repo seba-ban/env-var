@@ -34,7 +34,7 @@ def use_validators_package(validator_name: str):
     def validator(s: str):
         validation_result = getattr(validators, validator_name)(s)
         if isinstance(validation_result, ValidationFailure):
-            raise ValueError(f"{s} is not a valid {validator_name}") from None
+            raise ValueError(f"{s} is not a valid {validator_name}")
         return s
 
     return validator

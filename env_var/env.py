@@ -135,7 +135,7 @@ class env:
         """
         return self.__ret_env(lambda s: ipaddress.ip_interface(s))
 
-    def as_enum(self, enum: Type[EnumType]):
+    def as_enum(self, enum: Type[EnumType]) -> _env[EnumType]:
         """
         Parses env var as an Enum
         """

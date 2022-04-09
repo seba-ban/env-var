@@ -23,10 +23,10 @@ def num_transformer_factory(
             val = type_(s, base=base)  # type: ignore
 
         if min is not None and val < min:
-            raise ValueError(f"should be bigger than {min}")
+            raise ValueError(f"should be bigger or equal {min}")
 
         if max is not None and val > max:
-            raise ValueError(f"should be less than {max}")
+            raise ValueError(f"should be less or equal {max}")
 
         return val
 

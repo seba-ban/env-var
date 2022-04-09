@@ -23,8 +23,12 @@ def check_validators(
     invalid_values: Sequence[Any],
 ):
     for valid in valid_values:
-        set_var(valid)
-        test_case.assertEqual(_env_instance.required(), valid)
+        if isinstance(valid, tuple):
+            var_value, parsed = valid
+        else:
+            var_value = parsed = valid
+        set_var(var_value)
+        test_case.assertEqual(_env_instance.required(), parsed)
 
     for invalid in invalid_values:
         with test_case.assertRaises(EnvVarValidationError):
@@ -42,3 +46,10 @@ def check_validators(
 
     for invalid in invalid_values:
         test_case.assertIsNone(_env_instance.optional())
+
+    for valid in valid_values:
+        if isinstance(valid, tuple):
+            _, parsed = valid
+        else:
+            parsed = valid
+        test_case.assertEqual(_env_instance.default(parsed).required(), parsed)
