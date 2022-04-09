@@ -5,27 +5,9 @@ A simple utility for working with environment variables. The main goal was to pr
 ```python
 from env_var import env
 
-port = env('PORT').as_port_number().required() # port type hint is `int`
-
+minio_port = env('PORT').as_port_number().default(9000).required() # port type hint is `int`
 minio_host = env('MINIO_HOST').as_hostname().optional() # minio_host type hint is `str | None`
+minio_secure = env('MINIO_SECURE').as_bool().required() # minio_host type hint is `bool`
 ```
 
-
-## Type Hints
-
-```python
-from typing import overload, Literal, Optional
-
-@overload
-def get_something() -> Optional[str]: ...
-@overload
-def get_something(required: Literal[False]) -> Optional[str]: ...
-@overload
-def get_something(required: Literal[True]) -> str: ...
-def get_something(required: bool = False) -> Optional[str]:
-  if required: return "ok"
-
-something = get_something()
-something = get_something(required=False)
-something = get_something(required=True)
-```
+Setting `default` will result in always returning a value, so it makes little sense to use it with `optional`.

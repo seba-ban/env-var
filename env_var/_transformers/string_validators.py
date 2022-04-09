@@ -5,7 +5,7 @@ import validators
 from rfc3986_validator import validate_rfc3986
 from validators import ValidationFailure
 
-# regex borrowed from: https://github.com/ajv-validator/ajv-formats
+# kudos for the regex: https://github.com/ajv-validator/ajv-formats
 hostname_regex = re.compile(
     r"^(?=.{1,253}\.?$)[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[-0-9a-z]{0,61}[0-9a-z])?)*\.?$",
     re.IGNORECASE,

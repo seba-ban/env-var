@@ -243,7 +243,8 @@ class _env(Generic[T]):
 
     def optional(self) -> Optional[T]:
         """
-        :returns: the parsed environment variable, if it's set; otherwise - None
+        :returns: the parsed environment variable, if it's set;
+            if not, the default value if it was defined or None
 
         :raises EnvVarValidationError:
         """

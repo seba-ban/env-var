@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from env_var import env
+from env_var._transformers.numeric import num_transformer_factory
 
 from .helpers import VAR_NAME, check_validators, set_var
 
@@ -135,3 +136,15 @@ class TestNumeric(TestCase):
         check_validators(
             self, env(VAR_NAME).as_port_number(), valid_values, invalid_values
         )
+
+    def test_if_raises(self):
+        set_var("8")
+        with self.assertRaises(ValueError):
+            env(VAR_NAME).as_int(min=10, max=5)
+
+        with self.assertRaises(ValueError):
+            num_transformer_factory(float, base=10)
+
+    def test_accept_one(self):
+        set_var("8")
+        self.assertEqual(env(VAR_NAME).as_int(min=8, max=8).required(), 8)

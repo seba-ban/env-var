@@ -9,13 +9,13 @@ def num_transformer_factory(
     max: Optional[NumericType] = None,
     base: Optional[int] = None,
 ):
+    if min is not None and max is not None and min > max:
+        raise ValueError("min should be less than max")
+
+    if base is not None and type_ is float:
+        raise ValueError("base can be only defined for int")
+
     def transformer(s: str) -> NumericType:
-
-        if min is not None and max is not None and min > max:
-            raise ValueError("min should be less than max")
-
-        if base is not None and type_ is float:
-            raise ValueError("base can be only defined for int")
 
         if base is None:
             val = type_(s)

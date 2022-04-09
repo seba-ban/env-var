@@ -5,8 +5,8 @@ ALL_PACKAGES=${PACKAGE} ${TESTS}
 # sphinx vars
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = docs
-BUILDDIR      = build
+SOURCEDIR     = _docs
+BUILDDIR      = docs
 
 .PHONY: docs
 docs:
