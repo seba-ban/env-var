@@ -1,6 +1,7 @@
 TESTS=tests
 PACKAGE=env_var
 ALL_PACKAGES=${PACKAGE} ${TESTS}
+POETRY_CMD ?= poetry run
 
 # sphinx vars
 SPHINXOPTS    ?=
@@ -10,20 +11,20 @@ BUILDDIR      = docs
 
 .PHONY: docs
 docs:
-	@$(SPHINXBUILD) "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(POETRY_CMD) $(SPHINXBUILD) "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 .PHONY: format
 format: sort_imports
-	black ${ALL_PACKAGES}
+	$(POETRY_CMD) black ${ALL_PACKAGES}
 
 .PHONY: sort_imports
 sort_imports:
-	isort ${ALL_PACKAGES}
+	$(POETRY_CMD) isort ${ALL_PACKAGES}
 
 .PHONY: test
 test:
-	pytest --cov-report term-missing --cov=${PACKAGE} ${TESTS}
+	$(POETRY_CMD) pytest --cov-report term-missing --cov=${PACKAGE} ${TESTS}
 
 .PHONY: lint
 lint:
-	pylint ${PACKAGE}
+	$(POETRY_CMD) pylint ${PACKAGE}
