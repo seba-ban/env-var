@@ -111,6 +111,22 @@ All methods return an instance of the <a class="reference internal" href="#env_v
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="env_var.env.as_float_list">
+<span class="sig-name descname"><span class="pre">as_float_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split_on</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_item_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_item_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#env_var.env.as_float_list" title="Permalink to this definition"></a></dt>
+<dd><p>Parses env var as a list of floats</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>split_on</strong> – string on which env var should be split</p></li>
+<li><p><strong>base</strong> – the base defaults to 10; valid bases are 0 and 2-36</p></li>
+<li><p><strong>min_item_value</strong> – min acceptable value for a single list item</p></li>
+<li><p><strong>max_item_value</strong> – max acceptable value for a single list item</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="env_var.env.as_float_negative">
 <span class="sig-name descname"><span class="pre">as_float_negative</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#env_var.env.as_float_negative" title="Permalink to this definition"></a></dt>
 <dd><p>Parses env var as a negative float</p>
@@ -138,6 +154,22 @@ All methods return an instance of the <a class="reference internal" href="#env_v
 <li><p><strong>base</strong> – the base defaults to 10; valid bases are 0 and 2-36</p></li>
 <li><p><strong>min</strong> – min acceptable value</p></li>
 <li><p><strong>max</strong> – max acceptable value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="env_var.env.as_int_list">
+<span class="sig-name descname"><span class="pre">as_int_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split_on</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_item_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_item_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#env_var.env.as_int_list" title="Permalink to this definition"></a></dt>
+<dd><p>Parses env var as a list of ints</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>split_on</strong> – string on which env var should be split</p></li>
+<li><p><strong>base</strong> – the base defaults to 10; valid bases are 0 and 2-36</p></li>
+<li><p><strong>min_item_value</strong> – min acceptable value for a single list item</p></li>
+<li><p><strong>max_item_value</strong> – max acceptable value for a single list item</p></li>
 </ul>
 </dd>
 </dl>
@@ -202,9 +234,35 @@ All methods return an instance of the <a class="reference internal" href="#env_v
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="env_var.env.as_list">
+<span class="sig-name descname"><span class="pre">as_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_transformer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">env_var.env.T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_on</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#env_var.env._env" title="env_var.env._env"><span class="pre">env_var.env._env</span></a><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">env_var.env.T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#env_var.env.as_list" title="Permalink to this definition"></a></dt>
+<dd><p>Parses env var as a list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item_transformer</strong> – function called with every value
+of the split string</p></li>
+<li><p><strong>split_on</strong> – string on which env var should be split</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="env_var.env.as_port_number">
 <span class="sig-name descname"><span class="pre">as_port_number</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#env_var.env.as_port_number" title="Permalink to this definition"></a></dt>
 <dd><p>Parses env var as a port number (int between 1-65535)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="env_var.env.as_str_list">
+<span class="sig-name descname"><span class="pre">as_str_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split_on</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#env_var.env.as_str_list" title="Permalink to this definition"></a></dt>
+<dd><p>Parses env var as a list of strings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>split_on</strong> – string on which env var should be split</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">

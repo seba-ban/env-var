@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass
 from distutils.util import strtobool
 from enum import Enum
-from typing import Callable, Generic, Optional, Pattern, Type, TypeVar, Union
+from typing import Callable, Generic, List, Optional, Pattern, Type, TypeVar, Union
 from urllib.parse import urlparse
 
 from ._transformers.date import (
@@ -214,6 +214,72 @@ class env:
         Makes sure env var is as a valid rfc3339 string
         """
         return self.__ret_env(iso_date_validator)
+
+    def as_list(
+        self, item_transformer: Callable[[str], T], split_on: str = ","
+    ) -> _env[List[T]]:
+        """
+        Parses env var as a list
+
+        :param item_transformer: function called with every value
+                of the split string
+        :param split_on: string on which env var should be split
+        """
+        return self.__ret_env(
+            lambda s: [item_transformer(el) for el in s.split(split_on)]
+        )
+
+    def as_int_list(
+        self,
+        split_on: str = ",",
+        base: Optional[int] = 10,
+        min_item_value: Optional[int] = None,
+        max_item_value: Optional[int] = None,
+    ):
+        """
+        Parses env var as a list of ints
+
+        :param split_on: string on which env var should be split
+        :param base: the base defaults to 10; valid bases are 0 and 2-36
+        :param min_item_value: min acceptable value for a single list item
+        :param max_item_value: max acceptable value for a single list item
+        """
+        return self.as_list(
+            num_transformer_factory(
+                int, base=base, min=min_item_value, max=max_item_value
+            ),
+            split_on,
+        )
+
+    def as_float_list(
+        self,
+        split_on: str = ",",
+        min_item_value: Optional[float] = None,
+        max_item_value: Optional[float] = None,
+    ):
+        """
+        Parses env var as a list of floats
+
+        :param split_on: string on which env var should be split
+        :param base: the base defaults to 10; valid bases are 0 and 2-36
+        :param min_item_value: min acceptable value for a single list item
+        :param max_item_value: max acceptable value for a single list item
+        """
+        return self.as_list(
+            num_transformer_factory(float, min=min_item_value, max=max_item_value),
+            split_on,
+        )
+
+    def as_str_list(
+        self,
+        split_on: str = ",",
+    ):
+        """
+        Parses env var as a list of strings
+
+        :param split_on: string on which env var should be split
+        """
+        return self.as_list(lambda s: s, split_on)
 
 
 @dataclass

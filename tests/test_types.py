@@ -8,7 +8,7 @@ from ipaddress import (
     IPv6Interface,
     IPv6Network,
 )
-from typing import Generic, Tuple, TypeVar, Union
+from typing import Generic, List, Tuple, TypeVar, Union
 from unittest import TestCase
 from urllib.parse import ParseResult
 
@@ -94,6 +94,13 @@ class TestTypes(TestCase):
             check_type[datetime].test(e.as_iso_date().required())
             check_type[datetime].test(e.as_date().required())
             check_type[Duration].test(e.as_iso_duration().required())
+
+            check_type[List[int]].test(e.as_int_list().required())
+            check_type[List[float]].test(e.as_float_list().required())
+            check_type[List[str]].test(e.as_str_list().required())
+            check_type[List[List[int]]].test(
+                e.as_list(lambda s: [i for i in range(int(s))]).required()
+            )
 
         except:
             pass
