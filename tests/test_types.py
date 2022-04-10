@@ -97,7 +97,7 @@ class TestTypes(TestCase):
 
             check_type[List[int]].test(e.as_int_list().required())
             check_type[List[float]].test(e.as_float_list().required())
-            check_type[List[str]].test(e.as_str_list().required())
+            check_type[List[str]].test(e.as_string_list().required())
             check_type[List[List[int]]].test(
                 e.as_list(lambda s: [i for i in range(int(s))]).required()
             )

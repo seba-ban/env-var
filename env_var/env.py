@@ -270,7 +270,7 @@ class env:
             split_on,
         )
 
-    def as_str_list(
+    def as_string_list(
         self,
         split_on: str = ",",
     ):

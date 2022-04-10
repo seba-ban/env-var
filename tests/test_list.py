@@ -62,7 +62,7 @@ class TestList(TestCase):
         valid_values = (("10,2,4.23", ["10", "2", "4.23"]), ("12d", ["12d"]))
         invalid_values = tuple()
         check_validators(
-            self, env(VAR_NAME).as_str_list(), valid_values, invalid_values
+            self, env(VAR_NAME).as_string_list(), valid_values, invalid_values
         )
 
     def test_list(self):
