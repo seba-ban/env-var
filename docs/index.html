@@ -117,7 +117,7 @@
 <span class="k">class</span> <span class="nc">MyOwnClass</span><span class="p">:</span>
     <span class="n">initial</span><span class="p">:</span> <span class="nb">str</span>
 
-<span class="n">initial_class</span> <span class="o">=</span> <span class="n">env</span><span class="p">(</span><span class="s2">&quot;INITIAL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">custom_transformer</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">MyOwnClass</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="o">.</span><span class="n">required</span><span class="p">()</span> <span class="c1"># intial_class is of type MyOwnClass</span>
+<span class="n">initial_class</span> <span class="o">=</span> <span class="n">env</span><span class="p">(</span><span class="s2">&quot;INITIAL&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">custom_transformer</span><span class="p">(</span><span class="n">MyOwnClass</span><span class="p">)</span><span class="o">.</span><span class="n">required</span><span class="p">()</span> <span class="c1"># intial_class is of type MyOwnClass</span>
 </pre></div>
 </div>
 </section>
