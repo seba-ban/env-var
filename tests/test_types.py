@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 from ipaddress import (
@@ -101,6 +102,12 @@ class TestTypes(TestCase):
             check_type[List[List[int]]].test(
                 e.as_list(lambda s: [i for i in range(int(s))]).required()
             )
+
+            @dataclass
+            class MyOwnClass:
+                initial: str
+
+            check_type[MyOwnClass].test(e.custom_transformer(MyOwnClass).required())
 
         except:
             pass

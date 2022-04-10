@@ -28,11 +28,11 @@ from .errors import EnvVarNotDefinedError, EnvVarValidationError
 
 T = TypeVar("T")
 
-EnumType = TypeVar("EnumType", bound=Enum)
+EnumType = TypeVar("EnumType", bound=Enum)  # pylint: disable=invalid-name
 
 
 @dataclass
-class env:
+class env:  # pylint: disable=invalid-name,too-many-public-methods
     """
     Utility to validate and type cast environment variables.
     All methods return an instance of the :class:`~env._env` class.
@@ -46,8 +46,8 @@ class env:
     def as_int(
         self,
         base: Optional[int] = 10,
-        min: Optional[int] = None,
-        max: Optional[int] = None,
+        min: Optional[int] = None,  # pylint: disable=redefined-builtin
+        max: Optional[int] = None,  # pylint: disable=redefined-builtin
     ):
         """
         Parses env var as an int
@@ -76,8 +76,8 @@ class env:
 
     def as_float(
         self,
-        min: Optional[float] = None,
-        max: Optional[float] = None,
+        min: Optional[float] = None,  # pylint: disable=redefined-builtin
+        max: Optional[float] = None,  # pylint: disable=redefined-builtin
     ):
         """
         Parses env var as a float
@@ -115,31 +115,31 @@ class env:
         """
         Parses env var using :func:`urllib.parse.urlparse`
         """
-        return self.__ret_env(lambda s: urlparse(s))
+        return self.__ret_env(urlparse)
 
     def as_ip_address(self):
         """
         Parses env var using :func:`ipaddress.ip_address`
         """
-        return self.__ret_env(lambda s: ipaddress.ip_address(s))
+        return self.__ret_env(ipaddress.ip_address)
 
     def as_ip_network(self):
         """
         Parses env var using :func:`ipaddress.ip_network`
         """
-        return self.__ret_env(lambda s: ipaddress.ip_network(s))
+        return self.__ret_env(ipaddress.ip_network)
 
     def as_ip_interface(self):
         """
         Parses env var using :func:`ipaddress.ip_interface`
         """
-        return self.__ret_env(lambda s: ipaddress.ip_interface(s))
+        return self.__ret_env(ipaddress.ip_interface)
 
     def as_enum(self, enum: Type[EnumType]) -> _env[EnumType]:
         """
         Parses env var as an Enum
         """
-        return self.__ret_env(lambda s: enum(s))
+        return self.__ret_env(enum)
 
     def as_string(self):
         """
@@ -332,7 +332,7 @@ class _env(Generic[T]):
         return self
 
     def __getenv(self) -> Optional[T]:
-        val = os.getenv(self.__var_name)
+        val = os.getenv(self.__var_name)  # pylint: disable=invalid-envvar-value
         if val is None:
             return self.__default
         try:

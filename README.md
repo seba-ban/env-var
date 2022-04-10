@@ -51,5 +51,5 @@ It's also possible to pass custom transformers/validators.
 class MyOwnClass:
     initial: str
 
-initial_class = env("INITIAL").custom_transformer(lambda s: MyOwnClass(s)).required() # intial_class is of type MyOwnClass
+initial_class = env("INITIAL").custom_transformer(MyOwnClass).required() # intial_class is of type MyOwnClass
 ```
