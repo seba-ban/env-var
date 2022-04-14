@@ -4,7 +4,6 @@ import ipaddress
 import os
 import re
 from dataclasses import dataclass
-from distutils.util import strtobool
 from enum import Enum
 from typing import Callable, Generic, List, Optional, Pattern, Type, TypeVar, Union
 from urllib.parse import urlparse
@@ -25,6 +24,24 @@ from ._transformers.string_validators import (
     uuid_validator,
 )
 from .errors import EnvVarNotDefinedError, EnvVarValidationError
+
+
+# as the whole distutils package is deprecated in python 3.10,
+# just copying this function here with minor modifications
+def strtobool(val):
+    """Convert a string representation of truth to true (1) or false (0).
+
+    True values are 'y', 'yes', 't', 'true', 'on', and '1'; false values
+    are 'n', 'no', 'f', 'false', 'off', and '0'.  Raises ValueError if
+    'val' is anything else.
+    """
+    val = val.lower()
+    if val in ("y", "yes", "t", "true", "on", "1"):
+        return True
+    if val in ("n", "no", "f", "false", "off", "0"):
+        return False
+    raise ValueError(f"invalid truth value {val}")
+
 
 T = TypeVar("T")
 
@@ -109,7 +126,7 @@ class env:  # pylint: disable=invalid-name,too-many-public-methods
         """
         Parses env var as a boolen
         """
-        return self.__ret_env(lambda s: bool(strtobool(s)))
+        return self.__ret_env(strtobool)
 
     def as_urlparse(self):
         """
