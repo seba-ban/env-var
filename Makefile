@@ -6,8 +6,8 @@ POETRY_CMD ?= poetry run
 # sphinx vars
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = _docs
-BUILDDIR      = docs
+SOURCEDIR     = docs
+BUILDDIR      = build
 
 .PHONY: docs
 docs:
