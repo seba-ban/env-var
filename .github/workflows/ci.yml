@@ -1,0 +1,54 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry install
+      - name: Run linter
+        run: |
+          make lint
+      - name: Run tests
+        run: |
+          make test
+
+  semantic:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          npm i semantic-release \
+            @google/semantic-release-replace-plugin \
+            @semantic-release/git \
+            @semantic-release/changelog \
+            @semantic-release/exec
+      - name: Run semantic release
+        run: |
+          npx semantic-release
