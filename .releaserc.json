@@ -19,10 +19,15 @@
     [
       "@semantic-release/exec",
       {
-        "publishCmd": "poetry build && poetry publish"
+        "publishCmd": "poetry publish --build --username $TWINE_USERNAME --password $TWINE_PASSWORD"
       }
     ],
     "@semantic-release/github",
-    "@semantic-release/git"
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["CHANGELOG.md", "pyproject.toml"]
+      }
+    ]
   ]
 }

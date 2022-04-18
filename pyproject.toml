@@ -1,6 +1,15 @@
 [tool.poetry]
 name = "env_var"
 version = "0.1.0"
+license = "MIT"
+readme = "README.md"
+documentation = "https://env-var.readthedocs.io"
+repository = "https://github.com/seba-ban/env-var"
+keywords = [
+  "environment",
+  "env-var"
+]
+include = ["CHANGELOG.md"]
 description = "simple utility to parse and validate environment variables"
 authors = ["Sebastian Banaszkiewicz <banaszkiewicz.sebastian@gmail.com>"]
 
