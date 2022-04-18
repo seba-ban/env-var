@@ -355,5 +355,4 @@ class _env(Generic[T]):
         try:
             return self.__transformer(val)
         except ValueError as err:
-            print(err)
             raise EnvVarValidationError(self.__var_name, *err.args) from None
