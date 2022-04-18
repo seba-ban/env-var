@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "env_var"
-version = "1.0.0"
+version = "1.0.1"
 license = "MIT"
 readme = "README.md"
 documentation = "https://env-var.readthedocs.io"
