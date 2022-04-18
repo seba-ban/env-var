@@ -2,6 +2,14 @@
 
 A simple utility for working with environment variables. The main goal was to provide proper type check.
 
+## Installation
+
+```bash
+pip install env-var
+```
+
+## Usage
+
 ```python
 from env_var import env
 
