@@ -278,7 +278,6 @@ class env:  # pylint: disable=invalid-name,too-many-public-methods
         Parses env var as a list of floats
 
         :param split_on: string on which env var should be split
-        :param base: the base defaults to 10; valid bases are 0 and 2-36
         :param min_item_value: min acceptable value for a single list item
         :param max_item_value: max acceptable value for a single list item
         """
